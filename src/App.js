@@ -1,23 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import Footer from "./components/Footer";
+import Slide from "./components/Slide";
+import { publicRoutes } from "./routes";
+import { Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className='font-inter overflow-x-hidden'>
+      <Routes>
+        {publicRoutes.map((route, index) => {
+          const Page = route.component;
+          return <Route path={route.path} element={<Page />} key={index} />;
+        })}
+      </Routes>
+
+      <Slide />
+      <Footer />
     </div>
   );
 }
