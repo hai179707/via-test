@@ -143,9 +143,7 @@ function RegisterForm() {
           validationSchema={validationSchema}
           onSubmit={handleRegister}
         >
-          {(formikProps) => {
-            const { errors, touched } = formikProps;
-
+          {({ errors, touched }) => {
             return (
               <>
                 <Form className="flex flex-col items-center gap-7">

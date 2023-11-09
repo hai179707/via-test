@@ -1,27 +1,36 @@
-import { useDispatch, useSelector } from "react-redux";
-import { setSearchValue } from "../actions/loginActions";
 import Button from "./Button";
-import InputGroup from "./InputGroup";
+import { FastField, Form, Formik } from "formik";
+import * as Yup from "yup";
+import InputField from "./InputField";
 
 function SearchForm() {
-  const dispatch = useDispatch();
-  const { searchValue } = useSelector((reduxData) => reduxData.loginReducer);
-
-  const handleSearch = (e) => {
-    e.preventDefault();
-    console.log("Search value:", searchValue);
+  const handleSearch = (value) => {
+    console.log("Search value:", value.searchValue);
   };
+
+  const validationSchema = Yup.object().shape({
+    search: Yup.string().required("Hãy nhập thứ bạn tìm kiếm ở đây"),
+  });
+
   return (
-    <form className="flex items-end gap-4" onSubmit={handleSearch}>
-      <InputGroup
-        value={searchValue}
-        onChange={(e) => dispatch(setSearchValue(e.target.value))}
-        label="Nhập nội dung cần tìm"
-        placeholder="Tên người dùng, số điện thoại hoặc email"
-        className="w-[558px]"
-      />
-      <Button type="submit">Tìm</Button>
-    </form>
+    <Formik
+      initialValues={{ search: "" }}
+      validationSchema={validationSchema}
+      onSubmit={handleSearch}
+    >
+      {() => (
+        <Form className="flex items-end gap-4" onSubmit={handleSearch}>
+          <FastField
+            name="search"
+            conponent={InputField}
+            label="Nhập nội dung cần tìm"
+            placeholder="Tên người dùng, số điện thoại hoặc email"
+            className="w-[558px]" 
+          />
+          <Button type="submit">Tìm</Button>
+        </Form>
+      )}
+    </Formik>
   );
 }
 
