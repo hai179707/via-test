@@ -3,42 +3,25 @@ import {
   COUNTDOWN_CODE_TIMEOUT,
   SET_CLOSE_FORGET_PASSWORD_MODAL_TIME,
   SET_CODE_TIMEOUT,
-  SET_CONFIRM_PASSWORD_FORGET_PASSWORD_MODAL,
-  SET_CONFIRM_PASSWORD_FORGET_PASSWORD_MODAL_ERROR,
   SET_CORRECT_CODE,
   SET_CURRENT_STEP_FORGET_PASSWORD_MODAL,
   SET_IS_CORRECT_CODE,
   SET_IS_OPEN_FORGET_PASSWORD_MODAL,
   SET_MODAL_TITLE,
-  SET_NEW_PASSWORD_FORGET_PASSWORD_MODAL,
-  SET_NEW_PASSWORD_FORGET_PASSWORD_MODAL_ERROR,
+  SET_NEW_PASSWORD,
   SET_NUM_CODE_1,
   SET_NUM_CODE_2,
   SET_NUM_CODE_3,
   SET_NUM_CODE_4,
   SET_NUM_CODE_5,
   SET_NUM_CODE_6,
-  SET_USERNAME_FORGET_PASSWORD_MODAL,
-  SET_USERNAME_FORGET_PASSWORD_MODAL_ERROR,
+  SET_FORGET_PASSWORD_USERNAME,
 } from "../constants";
 
 const initialState = {
   isOpenForgetPasswordModal: false,
-  usernameForgetPasswordModal: {
-    value: "",
-    error: false,
-    helperText: "",
-  },
-  newPasswordForgetPasswordModal: {
-    value: "",
-    error: false,
-    helperText: "",
-  },
-  confirmPasswordForgetPasswordModal: {
-    value: "",
-    error: false,
-    helperText: "",
-  },
+  forgetPasswordUsername: "",
+  newPassword: "",
   modalTitle: "YÊU CẦU THAY ĐỔI MẬT KHẨU",
   currentStepForgetPasswordModal: 1,
   numCode1: "",
@@ -58,28 +41,11 @@ const forgotPasswordReducers = (state = initialState, action) => {
     case SET_IS_OPEN_FORGET_PASSWORD_MODAL:
       state.isOpenForgetPasswordModal = action.payload;
       break;
-    case SET_USERNAME_FORGET_PASSWORD_MODAL:
-      state.usernameForgetPasswordModal.value = action.payload;
+    case SET_FORGET_PASSWORD_USERNAME:
+      state.forgetPasswordUsername = action.payload;
       break;
-    case SET_USERNAME_FORGET_PASSWORD_MODAL_ERROR:
-      state.usernameForgetPasswordModal.error = action.payload.error;
-      state.usernameForgetPasswordModal.helperText = action.payload.helperText;
-      break;
-    case SET_NEW_PASSWORD_FORGET_PASSWORD_MODAL:
-      state.newPasswordForgetPasswordModal.value = action.payload;
-      break;
-    case SET_NEW_PASSWORD_FORGET_PASSWORD_MODAL_ERROR:
-      state.newPasswordForgetPasswordModal.error = action.payload.error;
-      state.newPasswordForgetPasswordModal.helperText =
-        action.payload.helperText;
-      break;
-    case SET_CONFIRM_PASSWORD_FORGET_PASSWORD_MODAL:
-      state.confirmPasswordForgetPasswordModal.value = action.payload;
-      break;
-    case SET_CONFIRM_PASSWORD_FORGET_PASSWORD_MODAL_ERROR:
-      state.confirmPasswordForgetPasswordModal.error = action.payload.error;
-      state.confirmPasswordForgetPasswordModal.helperText =
-        action.payload.helperText;
+    case SET_NEW_PASSWORD:
+      state.newPassword = action.payload;
       break;
     case SET_MODAL_TITLE:
       state.modalTitle = action.payload;

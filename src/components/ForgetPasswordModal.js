@@ -5,12 +5,9 @@ import {
   countdownCloseForgetPasswordModalTime,
   countdownCodeTimeout,
   setCloseForgetPasswordModalTime,
-  setConfirmPasswordForgetPasswordModal,
   setCurrentStepForgetPasswordModal,
   setIsOpenForgetPasswordModal,
   setModalTitle,
-  setNewPasswordForgetPasswordModal,
-  setUsernameForgetPasswordModal,
 } from "../actions/forgetPasswordActions";
 import { setIsLogin } from "../actions/loginActions";
 import { login } from "../services/userServices";
@@ -28,15 +25,9 @@ function ForgetPasswordModal() {
     modalTitle,
     currentStepForgetPasswordModal,
     closeForgetPasswordModalTime,
-    usernameForgetPasswordModal,
-    newPasswordForgetPasswordModal,
+    forgetPasswordUsername,
+    newPassword,
   } = useSelector((reduxData) => reduxData.forgotPasswordReducers);
-
-  useEffect(() => {
-    dispatch(setUsernameForgetPasswordModal(""));
-    dispatch(setNewPasswordForgetPasswordModal(""));
-    dispatch(setConfirmPasswordForgetPasswordModal(""));
-  }, [isOpenForgetPasswordModal, dispatch]);
 
   useEffect(() => {
     let intervalAutoLogin, timeoutAutoLogin, intervalCodeTimeout;
@@ -48,8 +39,8 @@ function ForgetPasswordModal() {
       timeoutAutoLogin = setTimeout(() => {
         const fetchApi = async () => {
           await login({
-            userName: usernameForgetPasswordModal.value,
-            password: newPasswordForgetPasswordModal.value,
+            userName: forgetPasswordUsername,
+            password: newPassword,
           });
           dispatch(setCurrentStepForgetPasswordModal(1));
           dispatch(setModalTitle("YÊU CẦU THAY ĐỔI MẬT KHẨU"));

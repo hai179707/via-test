@@ -1,8 +1,7 @@
 import {
   SET_IS_OPEN_FORGET_PASSWORD_MODAL,
-  SET_USERNAME_FORGET_PASSWORD_MODAL,
-  SET_NEW_PASSWORD_FORGET_PASSWORD_MODAL,
-  SET_CONFIRM_PASSWORD_FORGET_PASSWORD_MODAL,
+  SET_FORGET_PASSWORD_USERNAME,
+  SET_NEW_PASSWORD,
   SET_MODAL_TITLE,
   SET_CURRENT_STEP_FORGET_PASSWORD_MODAL,
   SET_NUM_CODE_1,
@@ -16,9 +15,6 @@ import {
   COUNTDOWN_CLOSE_FORGET_PASSWORD_MODAL_TIME,
   SET_CODE_TIMEOUT,
   COUNTDOWN_CODE_TIMEOUT,
-  SET_USERNAME_FORGET_PASSWORD_MODAL_ERROR,
-  SET_NEW_PASSWORD_FORGET_PASSWORD_MODAL_ERROR,
-  SET_CONFIRM_PASSWORD_FORGET_PASSWORD_MODAL_ERROR,
   SET_CORRECT_CODE,
 } from "../constants";
 
@@ -28,33 +24,13 @@ export const setIsOpenForgetPasswordModal = (payload) => ({
   payload,
 });
 
-export const setUsernameForgetPasswordModal = (payload) => ({
-  type: SET_USERNAME_FORGET_PASSWORD_MODAL,
+export const setForgetPasswordUsername = (payload) => ({
+  type: SET_FORGET_PASSWORD_USERNAME,
   payload,
 });
 
-export const setUsernameForgetPasswordModalError = (payload) => ({
-  type: SET_USERNAME_FORGET_PASSWORD_MODAL_ERROR,
-  payload,
-});
-
-export const setNewPasswordForgetPasswordModal = (payload) => ({
-  type: SET_NEW_PASSWORD_FORGET_PASSWORD_MODAL,
-  payload,
-});
-
-export const setNewPasswordForgetPasswordModalError = (payload) => ({
-  type: SET_NEW_PASSWORD_FORGET_PASSWORD_MODAL_ERROR,
-  payload,
-});
-
-export const setConfirmPasswordForgetPasswordModal = (payload) => ({
-  type: SET_CONFIRM_PASSWORD_FORGET_PASSWORD_MODAL,
-  payload,
-});
-
-export const setConfirmPasswordForgetPasswordModalError = (payload) => ({
-  type: SET_CONFIRM_PASSWORD_FORGET_PASSWORD_MODAL_ERROR,
+export const setNewPassword = (payload) => ({
+  type: SET_NEW_PASSWORD,
   payload,
 });
 

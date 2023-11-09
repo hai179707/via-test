@@ -32,7 +32,7 @@ function OtpForm() {
     numCode6,
     isCorrectCode,
     codeTimeout,
-    usernameForgetPasswordModal,
+    forgetPasswordUsername,
   } = useSelector((reduxData) => reduxData.forgotPasswordReducers);
 
   const isEnabled =
@@ -47,7 +47,7 @@ function OtpForm() {
   const handleResendCode = () => {
     dispatch(setCodeTimeout(180));
     const fetchApi = async () => {
-      await getOtpChangePassword(usernameForgetPasswordModal);
+      await getOtpChangePassword(forgetPasswordUsername);
     };
     fetchApi();
   };
@@ -59,7 +59,7 @@ function OtpForm() {
     if (isEnabled) {
       const fetchApi = async () => {
         const res = await validateOtpChangePassword({
-          userName: usernameForgetPasswordModal.value,
+          userName: forgetPasswordUsername,
           otpCode
         });
         if (res.status === "success") {
