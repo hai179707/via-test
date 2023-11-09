@@ -1,6 +1,6 @@
-import Button from "./Button";
 import { FastField, Form, Formik } from "formik";
 import * as Yup from "yup";
+import Button from "./Button";
 import InputField from "./InputField";
 
 function SearchForm() {
@@ -19,10 +19,10 @@ function SearchForm() {
       onSubmit={handleSearch}
     >
       {() => (
-        <Form className="flex items-end gap-4" onSubmit={handleSearch}>
+        <Form className="flex items-end gap-4">
           <FastField
             name="search"
-            conponent={InputField}
+            component={InputField}
             label="Nhập nội dung cần tìm"
             placeholder="Tên người dùng, số điện thoại hoặc email"
             className="w-[558px]" 
